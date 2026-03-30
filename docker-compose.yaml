@@ -1,0 +1,54 @@
+services:
+  catalogue:
+    build: ./catalogue
+    image: joindevops/catalogue:1.0.0
+    container_name: catalogue
+    depends_on:
+    - mongodb
+  user:
+    build: ./user
+    image: joindevops/user:1.0.0
+    container_name: user
+    depends_on:
+    - redis
+    - mongodb
+  cart:
+    build: ./cart
+    image: joindevops/cart:1.0.0
+    container_name: cart
+    depends_on:
+    - redis
+    - catalogue
+  shipping:
+    build: ./shipping
+    image: joindevops/shipping:1.0.0
+    container_name: shipping
+    depends_on:
+    - mysql
+    - cart
+  payment:
+    build: ./payment
+    image: joindevops/payment:1.0.0
+    container_name: payment
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+networks:
+  default:
+    driver: bridge
+    name: roboshop
+    external: false # if true, you need to create network manually
