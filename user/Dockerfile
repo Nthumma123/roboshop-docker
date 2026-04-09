@@ -1,5 +1,5 @@
 FROM node:20
-USER roboshop
+#USER roboshop
 WORKDIR /app
 COPY package*.json .
 COPY *.js .
