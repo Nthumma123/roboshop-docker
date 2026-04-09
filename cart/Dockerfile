@@ -1,12 +1,12 @@
 FROM node:20
-USER roboshop
+#USER roboshop
 WORKDIR /app
 COPY package*.json .
 COPY *.js .
 RUN npm install
 ENV REDIS_HOST="redis" \
     CATALOGUE="catalogue" \
-    CATALOGUE_PORT="redis://redis:6379" 
+    CATALOGUE_PORT="8080" 
 CMD ["node","server.js"]
 
 
